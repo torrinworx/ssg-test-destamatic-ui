@@ -1,37 +1,49 @@
-import { mount, Observer } from 'destam-dom';
-import { Typography, Theme, Icons, Icon, Button } from 'destamatic-ui';
-import FeatherIcons from "destamatic-ui/components/icons/FeatherIcons";
+import { mount } from 'destam-dom';
+import { Stage, StageContext, Button } from 'destamatic-ui';
 
-Theme.define({
-    custom: {
-        extends: 'h1',
-        color: 'white',
-    }
-});
+import About from './pages/about';
+import Blogs from './pages/blogs';
+import Landing from './pages/landing';
 
-const App = () => {
-    const background = Observer.timer(1000).map(t => t % 2 === 0 ? 'blue' : 'red');
 
-    return <div>
-        <div theme='center_radius' style={{ background, padding: 10 }}>
-            <Typography type='h1_custom' label='Welcome to destamatic!' />
-        </div>
-        <div theme='center'>
-            <Button
-                title='Github'
-                label={<Typography type='h4' label='Star destamatic on Github!' />}
-                type='icon'
-                icon={<Icon name='githubFI' size={30} />}
-                onClick={() => window.open('https://github.com/torrinworx/destamatic-ui', '_blank')}
-            />
-        </div>
-    </div>;
+const stageConfig = {
+	stages: {
+		Landing: Landing,
+		About: About,
+		Blogs: Blogs,
+	},
+	template: ({ children }) => children,
 };
 
-mount(document.body, <Icons value={[{
-    linkedinFI: FeatherIcons('linkedin'),
-    gitlabFI: FeatherIcons('gitlab'),
-    githubFI: FeatherIcons('github'),
-},
-    FeatherIcons,
-]} > <App /></Icons>);
+const Pages = StageContext.use(s => () => {
+	s.open({ name: 'Landing', label: 'Landing Page' });
+
+	return <>
+		<div theme='row'>
+			<Button
+				type="contained"
+				label="Landing"
+				onClick={() => s.open({ name: 'Landing' })}
+				style={{ marginRight: 8 }}
+			/>
+			<Button
+				type="contained"
+				label="Blogs"
+				onClick={() => s.open({ name: 'Blogs' })}
+				style={{ marginRight: 8 }}
+			/>
+			<Button
+				type="contained"
+				label="About"
+				onClick={() => s.open({ name: 'About' })}
+				style={{ marginRight: 8 }}
+			/>
+		</div>
+		<Stage />
+	</>;
+});
+
+const App = () => <StageContext value={stageConfig}>
+	<Pages />
+</StageContext>;
+mount(document.body, <App />);

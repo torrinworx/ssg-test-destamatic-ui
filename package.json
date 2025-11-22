@@ -1,0 +1,28 @@
+{
+    "name": "destamatic-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./backend/index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node ./backend/index.js",
+        "dev": "nodemon --watch ./frontend --watch ./destamatic-ui --watch ./backend --exec node ./backend/index.js",
+        "build": "bash build.sh",
+        "test": "node --test"
+    },
+    "author": "Torrin Leonard",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.25.2",
+        "@babel/generator": "^7.25.6",
+        "@babel/parser": "^7.25.6",
+        "@babel/plugin-syntax-jsx": "^7.24.7",
+        "destam": "^0.8.0",
+        "destam-dom": "^0.14.0",
+        "destamatic-ui": "file:destamatic-ui",
+        "esbuild": "^0.25.5",
+        "feather-icons": "^4.29.2",
+        "nodemon": "^3.1.7",
+        "vite": "^5.4.11"
+    }
+}

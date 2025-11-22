@@ -5,9 +5,10 @@
     "main": "./backend/index.js",
     "type": "module",
     "scripts": {
-        "start": "node ./backend/index.js",
-        "dev": "nodemon --watch ./frontend --watch ./destamatic-ui --watch ./backend --exec node ./backend/index.js",
-        "build": "bash build.sh",
+        "start": "vite",
+        "dev": "nodemon --watch ./frontend --watch ./destamatic-ui --exec vite",
+        "build": "vite build",
+        "build:ssg": "node ./destamatic-ui/ssg/build.js",
         "test": "node --test"
     },
     "author": "Torrin Leonard",
@@ -21,8 +22,17 @@
         "destam-dom": "^0.14.0",
         "destamatic-ui": "file:destamatic-ui",
         "esbuild": "^0.25.5",
-        "feather-icons": "^4.29.2",
         "nodemon": "^3.1.7",
-        "vite": "^5.4.11"
+        "vite": "^5.4.11",
+        "@iconify-json/tabler": "^1.2.22",
+        "@iconify-json/feather": "^1.2.1",
+        "@iconify-json/lineicons": "^1.2.6",
+        "@iconify-json/simple-icons": "^1.2.1",
+        "@material-design-icons/svg": "^0.14.15",
+        "country-region-data": "^3.1.0",
+        "feather-icons": "^4.29.2",
+        "leaflet": "^1.9.4",
+        "prismjs": "^1.30.0",
+        "simple-icons": "14.14.0"
     }
 }

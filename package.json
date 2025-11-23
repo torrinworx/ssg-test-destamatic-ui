@@ -6,9 +6,9 @@
     "type": "module",
     "scripts": {
         "start": "vite",
-        "dev": "nodemon --watch ./frontend --watch ./destamatic-ui --exec vite",
+        "dev": "nodemon --watch ./frontend --watch ./destamatic-ui --exec \"vite --config vite.config.js\"",
         "build": "vite build",
-        "build:ssg": "vite build && node ./destamatic-ui/ssg/build.js",
+        "build:ssg": "vite build --config vite.config.ssg.js && node ./destamatic-ui/ssg/build.js",
         "test": "node --test"
     },
     "author": "Torrin Leonard",

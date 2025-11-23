@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import assertRemove from 'destam-dom/transform/assertRemove';
 import compileHTMLLiteral from 'destam-dom/transform/htmlLiteral';
+import path from 'node:path';
 
 const createTransform = (name, transform, jsx, options) => ({
 	name,
@@ -16,48 +17,51 @@ const createTransform = (name, transform, jsx, options) => ({
 				map: transformed.map,
 			};
 		}
-	}
+	},
 });
 
 const plugins = [];
 
-plugins.push(createTransform('transform-literal-html', compileHTMLLiteral, true, {
-	jsx_auto_import: {
-		h: 'destamatic-ui',
-		'mark': 'destamatic-ui',
-
-		raw: {
-			name: 'h',
-			location: 'destam-dom'
-		}
-	},
-}));
+plugins.push(
+	createTransform('transform-literal-html', compileHTMLLiteral, true, {
+		jsx_auto_import: {
+			h: 'destamatic-ui',
+			mark: 'destamatic-ui',
+			raw: {
+				name: 'h',
+				location: 'destam-dom',
+			},
+		},
+	}),
+);
 
 if (process.env.ENV === 'production') {
 	plugins.push(createTransform('assert-remove', assertRemove));
 }
 
+// This config builds a Node-usable server bundle
 export default defineConfig({
 	root: './frontend',
 	plugins,
 	esbuild: {
 		jsx: 'preserve',
 	},
-	base: '',
+	server: {
+		port: 3000
+	},
 	resolve: {
 		extensions: ['.js', '.ts', '.tsx', '.jsx'],
 	},
-	server: {
-		port: process.env.PORT || 3000,
+	ssr: {
+		noExternal: ['country-region-data'],
 	},
 	build: {
-		target: 'esnext',
-		outDir: '../build/dist',
+		ssr: true,
+		outDir: '../build/server',
 		rollupOptions: {
+			input: path.resolve(__dirname, './frontend/index.ssg.jsx'),
 			output: {
-				entryFileNames: '[name].js',
-				chunkFileNames: 'assets/[name].[hash].js',
-				assetFileNames: 'assets/[name].[hash][extname]'
+				entryFileNames: 'ssg-entry.js'
 			},
 		},
 	},

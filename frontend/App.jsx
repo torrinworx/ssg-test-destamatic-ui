@@ -12,29 +12,43 @@ const stageConfig = {
         Blogs: Blogs,
     },
     template: ({ children }) => children,
+    initial: 'About',
+    ssg: true,
+    route: '/pages'
 };
 
 const Pages = StageContext.use(s => () => {
-    s.open({ name: 'Landing', label: 'Landing Page' });
 
     return <>
         <div theme='row'>
             <Button
                 type="contained"
                 label="Landing"
-                onClick={() => s.open({ name: 'Landing' })}
+                onClick={() => {
+                    console.log("LANDING")
+                    window.location.href = 'Landing.html'
+                }}
+                href='Landing.html'
                 style={{ marginRight: 8 }}
             />
             <Button
                 type="contained"
                 label="Blogs"
-                onClick={() => s.open({ name: 'Blogs' })}
+                onClick={() => {
+                    console.log("BLOGS")
+                    window.location.href = 'Blogs.html'
+                }}
+                href='Blogs.html'
                 style={{ marginRight: 8 }}
             />
             <Button
                 type="contained"
                 label="About"
-                onClick={() => s.open({ name: 'About' })}
+                onClick={() => {
+                    console.log("ABOUT")
+                    window.location.href = 'About.html'
+                }}
+                href='About.html'
                 style={{ marginRight: 8 }}
             />
         </div>

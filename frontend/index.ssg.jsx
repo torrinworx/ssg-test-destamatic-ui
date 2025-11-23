@@ -1,6 +1,6 @@
 import App from './App';
-import { renderToString } from 'destamatic-ui';
+import { render } from 'destamatic-ui';
 
 export function renderAppToString() {
-  return renderToString(App);
+  return render(App);
 };

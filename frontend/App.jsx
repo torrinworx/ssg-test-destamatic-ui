@@ -14,7 +14,7 @@ const stageConfig = {
     template: ({ children }) => children,
     initial: 'About',
     ssg: true,
-    route: '/pages'
+    route: '/'
 };
 
 const Pages = StageContext.use(s => () => {
@@ -25,8 +25,7 @@ const Pages = StageContext.use(s => () => {
                 type="contained"
                 label="Landing"
                 onClick={() => {
-                    console.log("LANDING")
-                    window.location.href = 'Landing.html'
+                    s.open({ name: 'Landing' })
                 }}
                 href='Landing.html'
                 style={{ marginRight: 8 }}
@@ -35,8 +34,7 @@ const Pages = StageContext.use(s => () => {
                 type="contained"
                 label="Blogs"
                 onClick={() => {
-                    console.log("BLOGS")
-                    window.location.href = 'Blogs.html'
+                    s.open({ name: 'Blogs' })
                 }}
                 href='Blogs.html'
                 style={{ marginRight: 8 }}
@@ -45,8 +43,7 @@ const Pages = StageContext.use(s => () => {
                 type="contained"
                 label="About"
                 onClick={() => {
-                    console.log("ABOUT")
-                    window.location.href = 'About.html'
+                    s.open({ name: 'About' })
                 }}
                 href='About.html'
                 style={{ marginRight: 8 }}

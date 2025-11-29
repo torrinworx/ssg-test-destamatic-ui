@@ -57,11 +57,11 @@ export default defineConfig({
 	},
 	build: {
 		ssr: true,
-		outDir: '../build/server',
+		outDir: '../build',
 		rollupOptions: {
 			input: path.resolve(__dirname, './frontend/index.ssg.jsx'),
 			output: {
-				entryFileNames: 'ssg-entry.js'
+				entryFileNames: 'ssg.js'
 			},
 		},
 	},

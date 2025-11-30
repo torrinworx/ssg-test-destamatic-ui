@@ -36,58 +36,47 @@ const Pages = StageContext.use(s => () => {
         .path('current')
         .map(c => (c ? `Current stage: ${c}` : 'No active stage'));
 
-    return (
-        <>
-            {/* Dynamic title for the root Stage */}
-            <Title text={title} />
+    return <>
+        <Title text={title} />
 
-            {/* Dynamic description for the root Stage */}
-            <Meta
-                group="meta:description"          // unique per group
-                name="description"
-                content={description}
+        <Meta
+            group="meta:description"
+            name="description"
+            content={description}
+        />
+
+        <div theme="row" style={{ marginBottom: 16 }}>
+            <Button
+                type="contained"
+                label="Landing"
+                onClick={() => {
+                    s.open({ name: 'Landing' });
+                }}
+                href="Landing.html"
+                style={{ marginRight: 8 }}
             />
+            <Button
+                type="contained"
+                label="Blogs"
+                onClick={() => {
+                    s.open({ name: 'Blogs' });
+                }}
+                href="Blogs.html"
+                style={{ marginRight: 8 }}
+            />
+            <Button
+                type="contained"
+                label="About"
+                onClick={() => {
+                    s.open({ name: 'About' });
+                }}
+                href="About.html"
+                style={{ marginRight: 8 }}
+            />
+        </div>
 
-            {/* Some global resources */}
-            <Link rel="stylesheet" href="/css/global.css" />
-            <Script src="/js/global.js" defer />
-            <Style>
-                {`.root { font-family: system-ui; }`}
-            </Style>
-
-            <div theme="row" style={{ marginBottom: 16 }}>
-                <Button
-                    type="contained"
-                    label="Landing"
-                    onClick={() => {
-                        s.open({ name: 'Landing' });
-                    }}
-                    href="Landing.html"
-                    style={{ marginRight: 8 }}
-                />
-                <Button
-                    type="contained"
-                    label="Blogs"
-                    onClick={() => {
-                        s.open({ name: 'Blogs' });
-                    }}
-                    href="Blogs.html"
-                    style={{ marginRight: 8 }}
-                />
-                <Button
-                    type="contained"
-                    label="About"
-                    onClick={() => {
-                        s.open({ name: 'About' });
-                    }}
-                    href="About.html"
-                    style={{ marginRight: 8 }}
-                />
-            </div>
-
-            <Stage />
-        </>
-    );
+        <Stage />
+    </>;
 });
 
 const App = () => (
@@ -115,12 +104,13 @@ const App = () => (
             name="description"
             content="Global description for the whole app"
         />
+
         <Script type="application/ld+json">
             {`{ "@context": "https://schema.org", "@type": "WebSite" }`}
         </Script>
-        <Style>
-            {`body { margin: 0; }`}
-        </Style>
+
+        <raw:script type="module" src="./index.js"></raw:script>
+
         <StageContext value={stageConfig}>
             <Pages />
         </StageContext>

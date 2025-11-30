@@ -1,4 +1,4 @@
-import { Stage, StageContext, Button } from 'destamatic-ui';
+import { Stage, StageContext, Button, Title } from 'destamatic-ui';
 
 
 const BlogHome = () => {
@@ -31,11 +31,15 @@ const blogsStageConfig = {
     template: ({ children }) => children,
     initial: 'BlogHome',
     ssg: true,
-    route: 'blogs', //TODO: Maybe routes are determined by the nested stages? Somehow? idk? something cleaner than this.
+    route: 'blogs',
 };
 
 const BlogPages = StageContext.use(s => () => {
+
+    const title = s.observer.path('current').map(c => c ? `blogs | ${c}` : 'blogs');
+
     return <>
+        <Title text={title} />
         <div theme="row" style={{ marginBottom: 16 }}>
             <Button
                 type="contained"

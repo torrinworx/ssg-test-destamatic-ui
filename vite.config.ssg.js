@@ -61,7 +61,7 @@ export default defineConfig({
 		rollupOptions: {
 			input: path.resolve(__dirname, './frontend/index.ssg.jsx'),
 			output: {
-				entryFileNames: 'ssg.js'
+				entryFileNames: 'index.ssg.js'
 			},
 		},
 	},

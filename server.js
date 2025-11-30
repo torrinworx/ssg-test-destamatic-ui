@@ -112,12 +112,10 @@ const httpServer = () => {
 					pathname === '/index.html';
 
 				if (isIndexLike) {
-					// Do NOT try filePath + '.html', just fall back to SPA/404
 					sendFile(path.join(root, 'index.html'));
 					return;
 				}
 
-				// Pretty URL: try adding .html (e.g. /about -> /about.html)
 				const htmlPath = filePath + '.html';
 				fs.stat(htmlPath, (errHtml, statsHtml) => {
 					if (!errHtml && statsHtml.isFile()) {
@@ -156,6 +154,6 @@ process.env.ENV = 'production';
 let server = httpServer();
 
 (async () => {
-	server.production({ root: path.join(__dirname, 'build', 'dist') });
+	server.production({ root: path.join(__dirname, 'build') });
 	server.listen(3000);
 })();

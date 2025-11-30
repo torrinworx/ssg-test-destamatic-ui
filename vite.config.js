@@ -51,6 +51,7 @@ export default defineConfig({
 		port: process.env.PORT || 3000,
 	},
 	build: {
+		minify: false,
 		target: 'esnext',
 		outDir: '../build/dist',
 		rollupOptions: {

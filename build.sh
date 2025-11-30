@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -R ./build
+
 vite build
 vite build --config vite.config.ssg.js 
 node ./destamatic-ui/ssg/build.js ./build ./frontend

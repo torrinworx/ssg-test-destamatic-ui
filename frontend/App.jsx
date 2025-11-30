@@ -7,7 +7,6 @@ import {
     Meta,
     Link,
     Script,
-    Style,
 } from 'destamatic-ui';
 
 import About from './pages/about';
@@ -79,42 +78,40 @@ const Pages = StageContext.use(s => () => {
     </>;
 });
 
-const App = () => (
-    <Head>
-        <Title>My App</Title>
-        <Meta charset="UTF-8" />
-        <Meta
-            group="meta:viewport"
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
-        <Link
-            rel="icon"
-            href="./favicon.svg"
-            sizes="any"
-            type="image/svg+xml"
-        />
-        <Meta
-            group="meta:description"
-            name="description"
-            content="this is from the ./frontend/index.html file"
-        />
-        <Meta
-            group="meta:description:global"
-            name="description"
-            content="Global description for the whole app"
-        />
+const App = () => <Head>
+    <Title>My App</Title>
+    <Meta charset="UTF-8" />
+    <Meta
+        group="meta:viewport"
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <Link
+        rel="icon"
+        href="./favicon.svg"
+        sizes="any"
+        type="image/svg+xml"
+    />
+    <Meta
+        group="meta:description"
+        name="description"
+        content="this is from the ./frontend/index.html file"
+    />
+    <Meta
+        group="meta:description:global"
+        name="description"
+        content="Global description for the whole app"
+    />
 
-        <Script type="application/ld+json">
-            {`{ "@context": "https://schema.org", "@type": "WebSite" }`}
-        </Script>
+    <Script type="application/ld+json">
+        {`{ "@context": "https://schema.org", "@type": "WebSite" }`}
+    </Script>
 
-        <raw:script type="module" src="./index.js"></raw:script>
+    <Script type="module" crossorigin src="./index.js"></Script>
 
-        <StageContext value={stageConfig}>
-            <Pages />
-        </StageContext>
-    </Head>
-);
+    <StageContext value={stageConfig}>
+        <Pages />
+    </StageContext>
+</Head>;
 
 export default App;

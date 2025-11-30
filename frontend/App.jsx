@@ -93,20 +93,34 @@ const Pages = StageContext.use(s => () => {
 const App = () => (
     <Head>
         <Title>My App</Title>
+        <Meta charset="UTF-8" />
+        <Meta
+            group="meta:viewport"
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <Link
+            rel="icon"
+            href="./favicon.svg"
+            sizes="any"
+            type="image/svg+xml"
+        />
+        <Meta
+            group="meta:description"
+            name="description"
+            content="this is from the ./frontend/index.html file"
+        />
         <Meta
             group="meta:description:global"
             name="description"
             content="Global description for the whole app"
         />
-        <Link rel="icon" href="/favicon.ico" />
         <Script type="application/ld+json">
             {`{ "@context": "https://schema.org", "@type": "WebSite" }`}
         </Script>
         <Style>
             {`body { margin: 0; }`}
         </Style>
-
-        {/* The routed content */}
         <StageContext value={stageConfig}>
             <Pages />
         </StageContext>

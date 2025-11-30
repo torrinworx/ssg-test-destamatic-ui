@@ -8,7 +8,7 @@
         "start": "vite",
         "dev": "nodemon --watch ./frontend --watch ./destamatic-ui --exec \"vite --config vite.config.js\"",
         "build": "vite build",
-        "build:ssg": "vite build --config vite.config.ssg.js && node ./destamatic-ui/ssg/build.js ./build",
+        "build:ssg": "vite build --config vite.config.ssg.js && node ./destamatic-ui/ssg/build.js ./build ./frontend",
         "test": "node --test"
     },
     "author": "Torrin Leonard",

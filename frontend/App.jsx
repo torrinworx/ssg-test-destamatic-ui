@@ -88,7 +88,7 @@ const App = () => <Head>
     />
     <Link
         rel="icon"
-        href="./favicon.svg"
+        href="/Test.svg"
         sizes="any"
         type="image/svg+xml"
     />
@@ -107,7 +107,7 @@ const App = () => <Head>
         {`{ "@context": "https://schema.org", "@type": "WebSite" }`}
     </Script>
 
-    <Script type="module" crossorigin src="./index.js"></Script>
+    <Script type="module" crossorigin src="/index.js"></Script>
 
     <StageContext value={stageConfig}>
         <Pages />

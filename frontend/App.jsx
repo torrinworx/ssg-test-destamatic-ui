@@ -109,6 +109,7 @@ const App = () => <Head>
 
     <Script type="module" crossorigin src="/index.js"></Script>
 
+    <img src='/Test.png' style={{ height: 500 }} />
     <StageContext value={stageConfig}>
         <Pages />
     </StageContext>

@@ -24,14 +24,13 @@ const SecondPost = () => {
 
 const blogsStageConfig = {
     stages: {
-        BlogHome: BlogHome,
-        FirstPost: FirstPost,
-        SecondPost: SecondPost,
+        Blogs: BlogHome,
+        FirstPost,
+        SecondPost,
     },
     template: ({ children }) => children,
-    initial: 'BlogHome',
     ssg: true,
-    route: 'blogs',
+    initial: 'Blogs',
 };
 
 const BlogPages = StageContext.use(s => () => {
@@ -45,9 +44,9 @@ const BlogPages = StageContext.use(s => () => {
                 type="contained"
                 label="Blog Home"
                 onClick={() => {
-                    s.open({ name: 'BlogHome' });
+                    s.open({ name: 'Blogs' });
                 }}
-                href="BlogHome.html"
+                href="/blogs/"
                 style={{ marginRight: 8 }}
             />
             <Button

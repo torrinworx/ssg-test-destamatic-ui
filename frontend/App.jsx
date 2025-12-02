@@ -9,9 +9,9 @@ import {
     Script,
 } from 'destamatic-ui';
 
-import About from './pages/about';
-import Blogs from './pages/blogs';
-import Landing from './pages/landing';
+import About from './pages/About';
+import Blogs from './pages/Blogs';
+import Landing from './pages/Landing';
 
 const stageConfig = {
     stages: {
@@ -20,9 +20,8 @@ const stageConfig = {
         Blogs,
     },
     template: ({ children }) => children,
-    initial: 'About',
+    initial: 'Landing',
     ssg: true,
-    route: '/',
 };
 
 const Pages = StageContext.use(s => () => {
@@ -72,8 +71,14 @@ const Pages = StageContext.use(s => () => {
                 href="About.html"
                 style={{ marginRight: 8 }}
             />
+            <Button
+                type='contained'
+                label='Blogs/FirstPage'
+                onClick={() => {
+                    s.open({ name: 'Blogs/FirstPost' });
+                }}
+            />
         </div>
-
         <Stage />
     </>;
 });

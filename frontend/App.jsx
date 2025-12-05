@@ -14,7 +14,7 @@ import Blogs from './pages/Blogs';
 import Landing from './pages/Landing';
 
 const stageConfig = {
-    stages: {
+    acts: {
         Landing,
         About,
         Blogs,

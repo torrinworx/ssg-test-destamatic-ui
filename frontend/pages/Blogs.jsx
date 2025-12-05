@@ -23,14 +23,14 @@ const SecondPost = () => {
 };
 
 const blogsStageConfig = {
-    stages: {
+    acts: {
         Blogs: BlogHome,
         FirstPost,
         SecondPost,
     },
     template: ({ children }) => children,
-    ssg: true,
     initial: 'Blogs',
+    ssg: true,
 };
 
 const BlogPages = StageContext.use(s => () => {
